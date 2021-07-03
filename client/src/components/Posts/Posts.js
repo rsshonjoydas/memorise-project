@@ -1,12 +1,24 @@
+// ? external imports
 import React from 'react';
-import Post from './Post/Post';
+import { useSelector } from 'react-redux';
 
-const Posts = () => (
-  <>
-    <h1>Posts</h1>
-    <Post />
-    <Post />
-  </>
-);
+// ? internal imports
+import Post from './Post/Post';
+// import useStyles from './PostsStyles';
+
+const Posts = () => {
+  const posts = useSelector((state) => state.postsReducer);
+  // const style = useStyles();
+
+  console.log(posts);
+
+  return (
+    <>
+      <h1>Posts</h1>
+      <Post />
+      <Post />
+    </>
+  );
+};
 
 export default Posts;
