@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 // ? internal imports
-// const postsRouter = require("./routers/postsRouter")
+const postsRouter = require("./routes/postsRouter")
 
 
 
@@ -22,9 +22,10 @@ app.use(cors())
 // app.use(express.urlencoded({extended: true}))
 
 // TODO: mongodb database connection with mongoose
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.lobn7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.lobn7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('database connection successful!'))
 .catch(err => console.log(err))
 
@@ -39,7 +40,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 // app.use(cookieParser(process.env.COOKIE_SECRET))
 
 // ! routing setup
-// app.use("/posts", postsRouter);
+app.use("/posts", postsRouter);
 // app.use("/users", usersRouter);
 // app.use("/inbox", inboxRouter);
 
