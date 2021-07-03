@@ -1,13 +1,12 @@
 // ? external imports
-const express = require("express")
-const router = express.Router()
+const express = require('express');
 
 // ? internal imports
+const { getPosts } = require('../controllers/postsController');
 
+const router = express.Router();
 
 // TODO: post page
-router.get("/", (req, res) => {
-  res.send('this works!')
-})
+router.get('/', getPosts);
 
-module.exports = router
+module.exports = router;
