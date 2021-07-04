@@ -8,6 +8,7 @@ import reducers from './reducers';
 
 // ? internal imports
 import App from './App';
+import './index.css';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
